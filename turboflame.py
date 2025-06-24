@@ -10,7 +10,6 @@ import colorama
 
 colorama.init()
 
-# Farben
 RED = "\033[91m"
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -21,7 +20,6 @@ RAINBOW = ["\033[91m", "\033[93m", "\033[92m", "\033[96m", "\033[94m", "\033[95m
 def rainbow(text):
     return ''.join(RAINBOW[i % len(RAINBOW)] + c for i, c in enumerate(text)) + RESET
 
-# Begrüßung
 for line in [
     "╔══════════════════════════════════════╗",
     "║            TURBOFLAME V0.9           ║",
@@ -110,7 +108,7 @@ def tippe(text, chatkey, maxlen=127):
         time.sleep(0.35)
 
 def sende_text(_, typ):
-    texte[typ] = lade_txt_datei(f"{typ}.txt")  # Live reload
+    texte[typ] = lade_txt_datei(f"{typ}.txt")
     now = datetime.now()
     gültig = [t for t in texte[typ] if t not in text_cache[typ] or now - text_cache[typ][t] > SPERRZEIT]
     if not gültig:
@@ -136,11 +134,10 @@ def sende_text(_, typ):
     elif typ == "flames_enemy" and config["flame_intro_enemy"]:
         text = f"{config['flame_intro_enemy_text']} {text}"
 
-    # Korrekte Chatkeys wiederhergestellt
     if typ == "flames":
-        chatkey = config['chat_key_nice']  # Team-Flame => u
+        chatkey = config['chat_key_nice']
     elif typ == "flames_enemy":
-        chatkey = config['chat_key']       # Enemy-Flame => z
+        chatkey = config['chat_key']
     elif typ == "nice":
         chatkey = config['chat_key_nice']
     else:
