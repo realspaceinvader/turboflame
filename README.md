@@ -21,9 +21,7 @@
 - Game must allow global chat key input (Counter-Strike tested)
 
 ## 📦 Dependencies
-
 Install via pip:
-```bash
 pip install pynput colorama
 
 📁 File Structure
